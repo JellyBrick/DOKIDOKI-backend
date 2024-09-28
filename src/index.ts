@@ -67,7 +67,7 @@ app.doc('/doc', {
   openapi: '3.1.0',
   info: {
     version: '1.0.0',
-    title: 'Rabbit Backend API',
+    title: 'DOKIDOKI Backend API',
   },
 });
 
