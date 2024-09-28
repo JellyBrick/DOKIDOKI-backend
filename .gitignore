@@ -1,3 +1,6 @@
+# KVStore data
+./data*
+
 # Logs
 logs
 *.log

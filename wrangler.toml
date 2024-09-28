@@ -1,0 +1,4 @@
+name = "dokidoki-backend"
+
+[placement]
+mode = "smart"
