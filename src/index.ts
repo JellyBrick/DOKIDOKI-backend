@@ -47,7 +47,17 @@ app.use(
   '*',
   cors({
     origin: [isNode ? 'http://localhost:3000' : 'https://dokidoki.zvz.be'],
-    allowMethods: ['GET', 'POST', 'OPTIONS'],
+    allowMethods: [
+      'GET',
+      'POST',
+      'OPTIONS',
+      'PUT',
+      'DELETE',
+      'PATCH',
+      'HEAD',
+      'CONNECT',
+      'TRACE',
+    ],
   }),
 );
 
