@@ -6,4 +6,5 @@ export type RouteType = {
   handler: Handler;
 };
 
-export const routes: RouteType[] = [];
+export const nonAuthenticatedRoutes: RouteType[] = [];
+export const authenticatedRoutes: RouteType[] = [];

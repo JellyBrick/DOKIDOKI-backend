@@ -1,14 +1,16 @@
 import { OpenAPIHono } from '@hono/zod-openapi';
 import { cors } from 'hono/cors';
+import { jwt, type JwtVariables } from 'hono/jwt';
 import { createMiddleware } from 'hono/factory';
 import { swaggerUI } from '@hono/swagger-ui';
 
-import { routes } from '@/routes';
+import { authenticatedRoutes, nonAuthenticatedRoutes } from '@/routes';
 
 import type { KVNamespace } from '@cloudflare/workers-types';
 import type { HttpBindings } from '@hono/node-server';
 
 type AppContext = {
+  Variables: JwtVariables;
   Bindings: {
     dokidokiKV: KVNamespace;
     http: HttpBindings;
@@ -61,7 +63,9 @@ app.use(
   }),
 );
 
-routes.forEach(({ route, handler }) => app.openapi(route, handler));
+nonAuthenticatedRoutes.forEach(({ route, handler }) =>
+  app.openapi(route, handler),
+);
 
 app.doc('/doc', {
   openapi: '3.1.0',
@@ -72,6 +76,18 @@ app.doc('/doc', {
 });
 
 app.get('/swagger', swaggerUI({ url: '/doc' }));
+
+app.use('*', async (ctx, next) => {
+  const jwtMiddleware = jwt({
+    secret: (await ctx.env.dokidokiKV.get('jwt-secret'))!,
+  });
+
+  return await jwtMiddleware(ctx, next);
+});
+
+authenticatedRoutes.forEach(({ route, handler }) =>
+  app.openapi(route, handler),
+);
 
 if (isNode) {
   registerCFModuleForNode().then(() => serveForNode(app));
