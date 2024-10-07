@@ -34,7 +34,7 @@
   "dependencies": {
     "@hono/swagger-ui": "0.4.1",
     "@hono/zod-openapi": "0.16.2",
-    "@hono/zod-validator": "0.3.0",
+    "@hono/zod-validator": "0.4.1",
     "@miniflare/storage-file": "2.14.2",
     "@miniflare/storage-memory": "2.14.2",
     "hono": "4.6.3",
