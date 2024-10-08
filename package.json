@@ -15,7 +15,7 @@
     "@cloudflare/workers-types": "4.20240925.0",
     "@eslint/js": "9.11.1",
     "@hono/node-server": "1.13.1",
-    "@miniflare/kv": "2.14.2",
+    "@miniflare/kv": "2.14.4",
     "@stylistic/eslint-plugin-js": "2.8.0",
     "@total-typescript/ts-reset": "0.6.1",
     "@types/eslint__js": "8.42.3",
