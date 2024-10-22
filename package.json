@@ -29,7 +29,7 @@
     "tsx": "4.19.1",
     "typescript": "5.6.2",
     "typescript-eslint": "8.7.0",
-    "wrangler": "3.78.12"
+    "wrangler": "3.82.0"
   },
   "dependencies": {
     "@hono/swagger-ui": "0.4.1",
